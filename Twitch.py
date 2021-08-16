@@ -687,7 +687,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         if command.lower() == 'emote':
             send_chat(irc, f'https://e.wrnv.xyz/{message_components[1]}', channel)
 
-        if command.lower() == 'dice':
+        if command.lower() == 'würfel':
             random_number = random.randint(1, 7)
             if random_number == 1:
                 send_chat(irc, f'/me : PepeLaugh rate mal', channel)
