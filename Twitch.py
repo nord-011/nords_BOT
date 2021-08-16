@@ -237,6 +237,53 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         main_channel = '#nords_bot'
         send_chat(irc, f'/me : {user} said "{message}" in channel: "{channel}"', main_channel)
 
+        const_answers = {
+            'danking': '/me : FeelsDankMan 🤏 we do a little danking',
+            'squid': 'Squid1 FeelsDankMan Squid4',
+            'eguero': 'Eguero https://youtu.be/U1fhiP2fjYc?t=132',
+            'forsenbased':
+                'https://www.reddit.com/r/funny/comments/d4c2n/cake_pan_trade/c0xjhnm/?context=3 \
+                MegaLUL BAY ZED',
+            'powerup': 'PowerUpL FeelsDankMan PowerUpR',
+            'shrug': '¯\_ FeelsDankMan _/¯',
+            'id': 'just click your name in chatterino 4Head',
+            'tomsomnium1': 'PepeLaugh https://i.imgur.com/RTrJYt5.png',
+            'tomsomnium2': 'cmonBruh https://i.nuuls.com/tcW0F.png',
+            'pauli': 'https://twitter.com/Nord_011/status/1426592189237313539 FeelsOkayMan',
+            'paauulli': 'https://twitter.com/Nord_011/status/1426592189237313539 FeelsOkayMan',
+            'help': 'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md',
+            'commands': 'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md',
+            'bttv': f'bttvNice https://betterttv.com/emotes/shared/search?query={message_components[1]}',
+            'ffz': f'FrankerZ https://www.frankerfacez.com/emoticons/?q={message_components[1]}',
+            'logs': f'hackerCD https://logs.ivr.fi/?channel={message_components[2]}&username={message_components[1]}',
+            'following': f'👤 https://twitchfollowing.com/?{message_components[1]}',
+            'google': f'hackerCD https://www.google.com/search?q={plus_message}',
+            'chatstats': f'hackerCD https://stats.streamelements.com/c/{message_components[1]}',
+            'yt': f'hackerCD https://www.youtube.com/results?search_query={plus_message}',
+            'twitch': f'imGlitch https://www.twitch.tv/search?term={message_components[1]}',
+            'twitchuser': f'imGlitch https://www.twitch.tv/{message_components[1]}',
+            'subreddit': f'hackerCD https://www.reddit.com/r/{message_components[1]}/',
+            'reddituser': f'hackerCD https://www.reddit.com/u/{message_components[1]}/',
+            'reddit': f'hackerCD https://www.reddit.com/search/?q={plus_message}',
+            'wiki': f'hackerCD https://en.wikipedia.org/wiki/{underscore_search}',
+            'urban': f'hackerCD https://www.urbandictionary.com/define.php?term={plus_message}',
+            'duden': f'DatSheffy https://www.duden.de/rechtschreibung/{plus_message}',
+            'tts': f'https://www.elunduscore.com/',
+            'info': f'https://emotes.raccatta.cc/twitch/{message_components[1]}',
+            'user': f'https://emotes.raccatta.cc/twitch/{message_components[1]}',
+            'lyrics': f'https://genius.com/{minus_search}-lyrics',
+            'emote': f'https://e.wrnv.xyz/{message_components[1]}',
+            'age': f'/me : nord is {random.randint(1, 100)} years old forsenScoots',
+            'madmonq': 'Wow I sure feel energized after taking some MADMONQ ® PogChamp (remove this part of the \
+                message when you send this, thanks :) )',
+            'selloutsen': 'Wow I sure feel energized after taking some MADMONQ ® PogChamp (remove this part of the \
+                message when you send this, thanks :) )'
+        }
+
+        if command.lower() in const_answers:
+            send_chat(irc, const_answers[command.lower()], channel)
+            return
+
         if command.lower() == 'moing' and user == 'nord_011':
             send_chat(irc, f'/me : FeelsDankMan 👋', channel)
 
@@ -252,9 +299,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
 
         if command.lower() == 'send' and user == 'nord_011':
             send_chat(irc, f'{" ".join(message_components[2:])}', f'#{message_components[1]}')
-
-        if command.lower() == 'danking':
-            send_chat(irc, f'/me : FeelsDankMan 🤏 we do a little danking', channel)
 
         if command.lower() == 'yil':
             if message.lower() == '~yil':
@@ -279,10 +323,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             time.sleep(5)
             send_chat(irc, f'/me peepoSad {user} my tummy hurts and everything is blurry...', channel)
 
-
-        if command.lower() == 'madmonq' or command.lower() == 'selloutsen':
-            send_chat(irc, f'Wow I sure feel energized after taking some MADMONQ ® PogChamp (remove this part of the \
-            message when you send this, thanks :) )', channel)
 
         if command.lower() == 'pyramid':
             channel_no_hashtag1 = channel.split('#')
@@ -380,10 +420,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             else:
                 send_chat(irc, f'NOIDONTTHINKSO', channel)
                 pass
-
-        if command.lower() == 'age':
-            age = random.randint(1,100)
-            send_chat(irc, f'/me : nord is {age} years old forsenScoots', channel)
 
         if command.lower() == 'color':
             if user in MODS:
@@ -483,9 +519,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             else:
                 send_chat(irc, f'/me : FeelsDankMan 🖕 nö', channel)
 
-        if command.lower() == 'squid':
-            send_chat(irc, f'Squid1 FeelsDankMan Squid4', channel)
-
         if command.lower() == 'time':
             random_number = random.randint(1, 100)
             if random_number < 97:
@@ -498,16 +531,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 send_chat(irc, f'FeelsDankMan .oO( https://www.wikihow.life/Read-a-Clock )', channel)
                 time.sleep(10)
                 send_chat(irc, f'/me FeelsDankMan 🕐 {time.strftime("%M:%I %p")}?', channel)
-
-        if command.lower() == 'eguero':
-            send_chat(irc, f'Eguero https://youtu.be/U1fhiP2fjYc?t=132', channel)
-
-        if command.lower() == 'forsenbased':
-            send_chat(irc, f'https://www.reddit.com/r/funny/comments/d4c2n/cake_pan_trade/c0xjhnm/?context=3 \
-            MegaLUL BAY ZED', channel)
-
-        if command.lower() == 'powerup':
-            send_chat(irc, f'PowerUpL FeelsDankMan PowerUpR', channel)
 
         if command.lower() == 'coinflip':
             random_number = random.randint(1, 100)
@@ -535,12 +558,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             message_uppercase = message[5:].upper()
             send_chat(irc, f'/me : FeelsDankMan 📣 {message_uppercase}', channel)
 
-        if command.lower() == 'shrug':
-            send_chat(irc, F'¯\_ FeelsDankMan _/¯', channel)
-
-        if command.lower() == 'id':
-            send_chat(irc, f'just click your name in chatterino 4Head', channel)
-
         if command.lower() == 'abc':
             if user in MODS:
                 for character in "abcdefghijklmnopqrstuvwxy":
@@ -549,14 +566,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 send_chat(irc, f'/me FeelsDankMan z...', channel)
             else:
                 send_chat(irc,f'/me FeelsDankMan abcdefghijklmnopqrstuvwxyz', channel)
-
-        if command.lower() == 'tomsomnium1':
-            send_chat(irc, f'PepeLaugh https://i.imgur.com/RTrJYt5.png', channel)
-        if command.lower() == 'tomsomnium2':
-            send_chat(irc, f'cmonBruh https://i.nuuls.com/tcW0F.png', channel)
-
-        if command.lower() == 'pauli' or command.lower() == 'paauulli':
-            send_chat(irc, f'https://twitter.com/Nord_011/status/1426592189237313539 FeelsOkayMan', channel)
 
         if command.lower() == 'dababy':
             if message.lower() == '~dababy':
@@ -588,11 +597,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 send_chat(irc, f'PING! FeelsDankMan', channel)
             if random_number == 50:
                 send_chat(irc, f'PING￼ THIS￼ docCBT', channel)
-
-        if command.lower() == 'help':
-            send_chat(irc, f'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md', channel)
-        if command.lower() == 'commands':
-            send_chat(irc, f'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md', channel)
 
         if command.lower() == 'kiss':
             if message == '~kiss':
@@ -644,48 +648,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             else:
                 first_word_after_command = ''.join(components[4])
                 send_chat(irc, f"/me shoves a fist up {first_word_after_command}'s arse VaN 🤜(_(_|", channel)
-
-        if command.lower() == 'bttv':
-            send_chat(irc, f'bttvNice https://betterttv.com/emotes/shared/search?query={message_components[1]}', channel)
-        if command.lower() == 'ffz':
-            send_chat(irc, f'FrankerZ https://www.frankerfacez.com/emoticons/?q={message_components[1]}', channel)
-        if command.lower() == 'logs':
-            send_chat(irc, f'hackerCD \
-            https://logs.ivr.fi/?channel={message_components[2]}&username={message_components[1]}', channel)
-        if command.lower() == 'following':
-            send_chat(irc, f'👤 https://twitchfollowing.com/?{message_components[1]}', channel)
-        if command.lower() == 'google':
-            send_chat(irc, f'hackerCD https://www.google.com/search?q={plus_message}', channel)
-        if command.lower() == 'chatstats':
-            send_chat(irc, f'hackerCD https://stats.streamelements.com/c/{message_components[1]}', channel)
-        if command.lower() == 'yt':
-            send_chat(irc, f'hackerCD https://www.youtube.com/results?search_query={plus_message}', channel)
-        if command.lower() == 'twitch':
-            send_chat(irc, f'imGlitch https://www.twitch.tv/search?term={message_components[1]}', channel)
-        if command.lower() == 'twitchuser':
-            send_chat(irc, f'imGlitch https://www.twitch.tv/{message_components[1]}', channel)
-        if command.lower() == 'subreddit':
-            send_chat(irc, f'hackerCD https://www.reddit.com/r/{message_components[1]}/', channel)
-        if command.lower() == 'reddituser':
-            send_chat(irc, f'hackerCD https://www.reddit.com/u/{message_components[1]}/', channel)
-        if command.lower() == 'reddit':
-            send_chat(irc, f'hackerCD https://www.reddit.com/search/?q={plus_message}', channel)
-        if command.lower() == 'wiki':
-            send_chat(irc, f'hackerCD https://en.wikipedia.org/wiki/{underscore_search}', channel)
-        if command.lower() == 'urban':
-            send_chat(irc, f'hackerCD https://www.urbandictionary.com/define.php?term={plus_message}', channel)
-        if command.lower() == 'duden':
-            send_chat(irc, f'DatSheffy https://www.duden.de/rechtschreibung/{plus_message}', channel)
-        if command.lower() == 'tts':
-            send_chat(irc, f'https://www.elunduscore.com/', channel)
-        if command.lower() == 'info':
-            send_chat(irc, f'https://emotes.raccatta.cc/twitch/{message_components[1]}', channel)
-        if command.lower() == 'user':
-            send_chat(irc, f'https://emotes.raccatta.cc/twitch/{message_components[1]}', channel)
-        if command.lower() == 'lyrics':
-            send_chat(irc, f'https://genius.com/{minus_search}-lyrics', channel)
-        if command.lower() == 'emote':
-            send_chat(irc, f'https://e.wrnv.xyz/{message_components[1]}', channel)
 
         if command.lower() == 'würfel':
             random_number = random.randint(1, 7)
