@@ -590,9 +590,9 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 send_chat(irc, f'PING￼ THIS￼ docCBT', channel)
 
         if command.lower() == 'help':
-            send_chat(irc, f'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords-bot/blob/main/README.md', channel)
+            send_chat(irc, f'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md', channel)
         if command.lower() == 'commands':
-            send_chat(irc, f'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords-bot/blob/main/README.md', channel)
+            send_chat(irc, f'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md', channel)
 
         if command.lower() == 'kiss':
             if message == '~kiss':
