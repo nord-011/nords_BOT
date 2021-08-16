@@ -12,6 +12,8 @@ MODS = 'nord_011', 'tomsomnium1', 'paauulli'
 eg_test = 'nord_011', 'okayegbot'
 BOT_up = 1
 
+start_time = time.time()
+
 def send(irc: ssl.SSLSocket, message: str):
     irc.send(bytes(f'{message}\r\n', 'UTF-8'))
 
@@ -36,7 +38,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
     minus_search = '-'.join(components[4:])
     massping_message = ' '.join(components[4:])
     message_components = message.split()
-    start = time.perf_counter()
 
     def massping(text):
         resp = requests.get(f"https://tmi.twitch.tv/group/user/{channel[1:]}/chatters").json()
@@ -124,7 +125,8 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             emoji_list = '🇩🇪', '🇺🇬', '🌈', '🌽', '🌻', '🌭', '🍔', '🐢', '🐶', '🍌', '🍎', '🍒', '🍐', '🥭', '🐱'
             random_emoji = random.choice(emoji_list)
             if random_number < 48:
-                send_chat(irc, f'PONG! FeelsDankMan WineTime running for: {round(start / 60)}{random_emoji}', channel)
+                now = time.time()
+                send_chat(irc, f'PONG! FeelsDankMan WineTime running for: {round((now - start_time) / 60)}{random_emoji}', channel)
             if random_number == 49:
                 send_chat(irc, f'PING! FeelsDankMan', channel)
             if random_number == 50:
