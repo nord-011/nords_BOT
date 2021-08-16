@@ -253,27 +253,27 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             'paauulli': 'https://twitter.com/Nord_011/status/1426592189237313539 FeelsOkayMan',
             'help': 'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md',
             'commands': 'List of all the commands FeelsDankMan 👉 https://github.com/nord-011/nords_BOT/blob/main/README.md',
-            'bttv': f'bttvNice https://betterttv.com/emotes/shared/search?query={message_components[1]}',
-            'ffz': f'FrankerZ https://www.frankerfacez.com/emoticons/?q={message_components[1]}',
-            'logs': f'hackerCD https://logs.ivr.fi/?channel={message_components[2]}&username={message_components[1]}',
-            'following': f'👤 https://twitchfollowing.com/?{message_components[1]}',
-            'google': f'hackerCD https://www.google.com/search?q={plus_message}',
-            'chatstats': f'hackerCD https://stats.streamelements.com/c/{message_components[1]}',
-            'yt': f'hackerCD https://www.youtube.com/results?search_query={plus_message}',
-            'twitch': f'imGlitch https://www.twitch.tv/search?term={message_components[1]}',
-            'twitchuser': f'imGlitch https://www.twitch.tv/{message_components[1]}',
-            'subreddit': f'hackerCD https://www.reddit.com/r/{message_components[1]}/',
-            'reddituser': f'hackerCD https://www.reddit.com/u/{message_components[1]}/',
-            'reddit': f'hackerCD https://www.reddit.com/search/?q={plus_message}',
-            'wiki': f'hackerCD https://en.wikipedia.org/wiki/{underscore_search}',
-            'urban': f'hackerCD https://www.urbandictionary.com/define.php?term={plus_message}',
-            'duden': f'DatSheffy https://www.duden.de/rechtschreibung/{plus_message}',
-            'tts': f'https://www.elunduscore.com/',
-            'info': f'https://emotes.raccatta.cc/twitch/{message_components[1]}',
-            'user': f'https://emotes.raccatta.cc/twitch/{message_components[1]}',
-            'lyrics': f'https://genius.com/{minus_search}-lyrics',
-            'emote': f'https://e.wrnv.xyz/{message_components[1]}',
-            'age': f'/me : nord is {random.randint(1, 100)} years old forsenScoots',
+            'bttv': 'bttvNice https://betterttv.com/emotes/shared/search?query={message_components[1]}',
+            'ffz': 'FrankerZ https://www.frankerfacez.com/emoticons/?q={message_components[1]}',
+            'logs': 'hackerCD https://logs.ivr.fi/?channel={message_components[2]}&username={message_components[1]}',
+            'following': '👤 https://twitchfollowing.com/?{message_components[1]}',
+            'google': 'hackerCD https://www.google.com/search?q={plus_message}',
+            'chatstats': 'hackerCD https://stats.streamelements.com/c/{message_components[1]}',
+            'yt': 'hackerCD https://www.youtube.com/results?search_query={plus_message}',
+            'twitch': 'imGlitch https://www.twitch.tv/search?term={message_components[1]}',
+            'twitchuser': 'imGlitch https://www.twitch.tv/{message_components[1]}',
+            'subreddit': 'hackerCD https://www.reddit.com/r/{message_components[1]}/',
+            'reddituser': 'hackerCD https://www.reddit.com/u/{message_components[1]}/',
+            'reddit': 'hackerCD https://www.reddit.com/search/?q={plus_message}',
+            'wiki': 'hackerCD https://en.wikipedia.org/wiki/{underscore_search}',
+            'urban': 'hackerCD https://www.urbandictionary.com/define.php?term={plus_message}',
+            'duden': 'DatSheffy https://www.duden.de/rechtschreibung/{plus_message}',
+            'tts': 'https://www.elunduscore.com/',
+            'info': 'https://emotes.raccatta.cc/twitch/{message_components[1]}',
+            'user': 'https://emotes.raccatta.cc/twitch/{message_components[1]}',
+            'lyrics': 'https://genius.com/{minus_search}-lyrics',
+            'emote': 'https://e.wrnv.xyz/{message_components[1]}',
+            'age': '/me : nord is {random.randint(1, 100)} years old forsenScoots',
             'madmonq': 'Wow I sure feel energized after taking some MADMONQ ® PogChamp (remove this part of the \
                 message when you send this, thanks :) )',
             'selloutsen': 'Wow I sure feel energized after taking some MADMONQ ® PogChamp (remove this part of the \
@@ -281,7 +281,8 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         }
 
         if command.lower() in const_answers:
-            send_chat(irc, const_answers[command.lower()], channel)
+            ans = const_answers[command.lower()]
+            send_chat(irc, eval(f"f'{ans}'"), channel)
             return
 
         if command.lower() == 'moing' and user == 'nord_011':
