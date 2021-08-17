@@ -47,3 +47,7 @@
 | duden (German Word) | direct link to the provided german word |
 
 # As you can see, the bot is completely useless by now. If you would like to add the bot to your channel (for whatever reason) just contact me 4Head
+
+
+
+#tomsomnium1 was here
