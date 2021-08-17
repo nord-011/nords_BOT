@@ -64,7 +64,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
     if BOT_up >1:
         BOT_up =1
 
-    if message.lower().__contains__('hurensohn') or message.lower().__contains__('huso') or message.lower().__contains__('hs'):
+    if message.lower().__contains__('hurensohn') or message.lower().__contains__('huso') or message.lower().__contains__(' hs '):
         send_chat(irc, f'/timeout {user} 15s', channel)
         random_number = random.randint(1, 10)
         if random_number == 1:
