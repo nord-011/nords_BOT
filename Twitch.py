@@ -157,7 +157,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         send_chat(irc, f'FeelsDankMan', channel)
 
     if message == 'monkaS':
-        propability = random.randint(1, 10)
+        propability = random.randint(1, 50)
         if propability == 5:
             send_chat(irc, f'monk ass BillyApprove', channel)
         else:
@@ -215,7 +215,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             send_chat(irc, f'/me : {user} said "{message}"', '#nords_bot')
             pass
 
-    if message == '?' and user == 'nord_011':
+    if message == '?' and user == 'nord_011' and channel != 'kian':
         send_chat(irc, f'❓ ⠀ ⠀ ⠀ ⠀ ⠀ ❓ ⠀ ⠀ ⠀  ⠀ ⠀ ❓⠀ ⠀ ⠀  ⠀ ⠀ ⠀ ❓ ⠀ ⠀  ⠀ ❓ ⠀ ⠀ ⠀  ⠀ ⠀⠀⠀ ❓ ⠀ ⠀⠀ ⠀ ❓ ⠀ ⠀ ⠀ ⠀ ⠀ \
          ❓ ⠀ ⠀ ⠀❓⠀⠀ FeelsDankMan ...⠀⠀ ❓ ⠀ ⠀ ⠀ ⠀ ❓ ⠀⠀⠀⠀⠀ ❓ ⠀ ⠀ ⠀ ❓ ❓ ⠀ ⠀ ⠀ ❓ 󠀀 󠀀 ', channel)
 
