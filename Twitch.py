@@ -679,8 +679,13 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 send_chat(irc, f'/me : eShrug wo soll ich nen Würfel her haben', channel)
 
    except Exception as Error:
+       try:
+        print(Error)
         send_chat(irc, f'NotLikeThis you broke it @{user} / Error: {Error}', channel)
         return
+       except:
+           print(Error)
+           pass
 
 
 if __name__ == '__main__':
