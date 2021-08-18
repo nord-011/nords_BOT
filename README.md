@@ -29,6 +29,7 @@
 | KtoC | might be useful for the command above pepeLaugh |
 | Eguero | AGUEROOOOOOOOOOOOO |
 | spam (number) (message) | spams the provided message n times |
+| notifyme raid | will notify you as soon as a HuwoBot raid appears |
 
 
 # List of the search options (triggered with "~")
