@@ -64,16 +64,16 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
     if BOT_up >1:
         BOT_up =1
 
-    if message.lower().__contains__('hurensohn') or message.lower().__contains__(' huso '):
+    if 'hurensohn' in message.lower() or ' huso ' in message.lower():
         random_number = random.randint(1, 20)
         if random_number == 1:
             send_chat(irc, f'/me : T D: X I C @{user}', channel)
 
-    if message.__contains__('🖕'):
+    if '🖕' in message:
         send_chat(irc, f'/me : T D: X I C @{user}', channel)
 
 
-    if message.__contains__('nord') and channel != '#nord_011':
+    if 'nord' in message and channel != '#nord_011':
         send_chat(irc, f'DinkDonk "{user}: "{message}" in channel {channel}"', '#nords_bot')
 
     if message.lower().startswith('~join'):
@@ -87,7 +87,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         send_chat(irc, f'hackerCD connected', connect_to_channel)
         write.close()
 
-    if message.__contains__('A Raid Event at Level') and user == 'huwobot':
+    if 'A Raid Event at Level' in message and user == 'huwobot':
         file = open('raidusers.txt')
         for users in file:
             print(users)
@@ -171,7 +171,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
     if message == 'ppAutismo' and user == 'testisttest':
         send_chat(irc, F'ppAutismo', channel)
 
-    if message.__contains__('is now eating:') and user == 'supibot':
+    if 'is now eating:' in message and user == 'supibot':
         send_chat(irc, f'guhu @{message_components[0]} OpieOP', channel)
 
     if message == 'asd' and user == 'nord_011':
