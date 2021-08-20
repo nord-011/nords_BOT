@@ -18,7 +18,8 @@ def send(irc: ssl.SSLSocket, message: str):
     try:
         irc.send(bytes(f'{message}\r\n', 'UTF-8'))
     except Exception as Error:
-        print("Error '" + Error + "' while sending " + message)
+        print(Error)
+        print("while sending: " + message)
 
 def send_chat(irc: ssl.SSLSocket, message: str, channel: str):
     send(irc, f'PRIVMSG {channel} :{message}')
