@@ -15,7 +15,10 @@ BOT_up = 1
 start_time = time.time()
 
 def send(irc: ssl.SSLSocket, message: str):
-    irc.send(bytes(f'{message}\r\n', 'UTF-8'))
+    try:
+        irc.send(bytes(f'{message}\r\n', 'UTF-8'))
+    except Exception as Error:
+        print("Error '" + Error + "' while sending " + message)
 
 def send_chat(irc: ssl.SSLSocket, message: str, channel: str):
     send(irc, f'PRIVMSG {channel} :{message}')
