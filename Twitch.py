@@ -74,7 +74,9 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             send_chat(irc, f'/me : T D: X I C @{user}', channel)
 
     if '🖕' in message:
-        send_chat(irc, f'/me : T D: X I C @{user}', channel)
+        random_number = random.randint(1, 20)
+        if random_number == 1:
+            send_chat(irc, f'/me : T D: X I C @{user}', channel)
 
 
     if 'nord' in message and channel != '#nord_011':
