@@ -14,6 +14,27 @@ BOT_up = 1
 
 start_time = time.time()
 
+colors_map = {
+	'default': 'Green',
+	'red': 'Red',
+	'blue': 'Blue',
+	'light red': 'Firebrick',
+	'coral': 'Coral',
+	'light green': 'YellowGreen',
+	'orange': 'OrangeRed',
+	'dark green': 'SeaGreen',
+	'gold': 'GoldenRod',
+	'light orange': 'Chocolate',
+	'petrol': 'CadetBlue',
+	'light blue': 'DodgerBlue',
+	'pink': 'HotPink',
+	'violet': 'BlueViolet',
+	'green': 'SpringGreen'
+}
+
+def weighted_choice(choices):
+    return random.choices(*tuple(zip(*[(k, a[k]) for k in a]))) # magic
+
 def send(irc: ssl.SSLSocket, message: str):
     try:
         irc.send(bytes(f'{message}\r\n', 'UTF-8'))
@@ -144,7 +165,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         try:
             send_chat(irc, f'PING! FeelsDankMan TeaTime', channel)
             send_chat(irc, f'/me : {user} said "{message}"', '#nords_bot')
-        except:
+        except Exception:
             pass
 
     if message.startswith('!clear'):
@@ -165,8 +186,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         propability = random.randint(1, 50)
         if propability == 5:
             send_chat(irc, f'monk ass BillyApprove', channel)
-        else:
-            pass
 
     if message.lower() == '~status':
         if user in MODS:
@@ -185,8 +204,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         if random_number == 5:
             send_chat(irc, f'/me : FeelsDankMan The autism spectrum encompasses a range of neurodevelopmental conditions,\
             including autism and Asperger syndrome, generally known as autism spectrum disorders (ASD).', channel)
-        else:
-            pass
 
     if message.startswith('FeelsDankMan crayonTime') and user == 'nord_011':
         send_chat(irc, f'FeelsDankMan crayonTime', channel)
@@ -216,7 +233,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         else:
             send_chat(irc, f'NOIDONTTHINKSO', channel)
             send_chat(irc, f'/me : {user} said "{message}"', '#nords_bot')
-            pass
 
     if message == '?' and user == 'nord_011' and channel != 'kian':
         send_chat(irc, f'❓ ⠀ ⠀ ⠀ ⠀ ⠀ ❓ ⠀ ⠀ ⠀  ⠀ ⠀ ❓⠀ ⠀ ⠀  ⠀ ⠀ ⠀ ❓ ⠀ ⠀  ⠀ ❓ ⠀ ⠀ ⠀  ⠀ ⠀⠀⠀ ❓ ⠀ ⠀⠀ ⠀ ❓ ⠀ ⠀ ⠀ ⠀ ⠀ \
@@ -418,103 +434,18 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                     send_chat(irc, f'/me : please provide a number between 1 and 20 :Z', channel)
             else:
                 send_chat(irc, f'NOIDONTTHINKSO', channel)
-                pass
 
         if command.lower() == 'color':
             if user in MODS:
                 if message.lower() == '~color random':
-                    random_number = random.randint(1, 15)
-                    if random_number == 1:
-                        send_chat(irc, f'/color Green', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 2:
-                        send_chat(irc, f'/color Red', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 3:
-                        send_chat(irc, f'/color Blue', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 4:
-                        send_chat(irc, f'/color Firebrick', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 5:
-                        send_chat(irc, f'/color Coral', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 6:
-                        send_chat(irc, f'/color YellowGreen', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 7:
-                        send_chat(irc, f'/color OrangeRed', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 8:
-                        send_chat(irc, f'/color SeaGreen', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 9:
-                        send_chat(irc, f'/color GoldenRod', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 10:
-                        send_chat(irc, f'/color Chocolate', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 11:
-                        send_chat(irc, f'/color CadetBlue', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 12:
-                        send_chat(irc, f'/color DodgerBlue', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 13:
-                        send_chat(irc, f'/color HotPink', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 14:
-                        send_chat(irc, f'/color BlueViolet', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                    if random_number == 15:
-                        send_chat(irc, f'/color SpringGreen', channel)
-                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-
-                if message.lower() == '~color default':
-                    send_chat(irc, f'/color Green', channel)
+                    colors = tuple(colors_map.values())
+                    send_chat(irc, f'/color {random.choice(colors)}', channel)
                     send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color red':
-                    send_chat(irc, f'/color Red', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color blue':
-                    send_chat(irc, f'/color Blue', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color light red':
-                    send_chat(irc, f'/color Firebrick', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color coral':
-                    send_chat(irc, f'/color Coral', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color light green':
-                    send_chat(irc, f'/color YellowGreen', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color orange':
-                    send_chat(irc, f'/color OrangeRed', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color dark green':
-                    send_chat(irc, f'/color SeaGreen', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color gold':
-                    send_chat(irc, f'/color GoldenRod', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color light orange':
-                    send_chat(irc, f'/color Chocolate', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color petrol':
-                    send_chat(irc, f'/color CadetBlue', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color light blue':
-                    send_chat(irc, f'/color DodgerBlue', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color pink':
-                    send_chat(irc, f'/color HotPink', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color violet':
-                    send_chat(irc, f'/color BlueViolet', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
-                if message.lower() == '~color green':
-                    send_chat(irc, f'/color SpringGreen', channel)
-                    send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
+                else:
+                    color = message_components[1]
+                    if color in colors_map:
+                        send_chat(irc, f'/color {colors_map[color]}', channel)
+                        send_chat(irc, f'/me FeelsDankMan 👍 color changed', channel)
             else:
                 send_chat(irc, f'/me : FeelsDankMan 🖕 nö', channel)
 
@@ -605,9 +536,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
 
         if command.lower() =='math' and user == 'nord_011':
             string = message_no_command_no_space
-            if len(string.split('*')) != 1:
-                pass
-            elif len(string.split('+')) != 1:
+            if len(string.split('+')) != 1:
                 numbers = string.split('+')
                 result = int(numbers[0]) + int(numbers[1])
                 send_chat(irc, result, channel)
@@ -683,7 +612,6 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         return
        except:
            print(Error)
-           pass
 
 
 if __name__ == '__main__':
