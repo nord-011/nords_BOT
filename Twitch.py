@@ -15,21 +15,21 @@ BOT_up = 1
 start_time = time.time()
 
 colors_map = {
-	'default': 'Green',
-	'red': 'Red',
-	'blue': 'Blue',
-	'light red': 'Firebrick',
-	'coral': 'Coral',
-	'light green': 'YellowGreen',
-	'orange': 'OrangeRed',
-	'dark green': 'SeaGreen',
-	'gold': 'GoldenRod',
-	'light orange': 'Chocolate',
-	'petrol': 'CadetBlue',
-	'light blue': 'DodgerBlue',
-	'pink': 'HotPink',
-	'violet': 'BlueViolet',
-	'green': 'SpringGreen'
+    'default': 'Green',
+    'red': 'Red',
+    'blue': 'Blue',
+    'light red': 'Firebrick',
+    'coral': 'Coral',
+    'light green': 'YellowGreen',
+    'orange': 'OrangeRed',
+    'dark green': 'SeaGreen',
+    'gold': 'GoldenRod',
+    'light orange': 'Chocolate',
+    'petrol': 'CadetBlue',
+    'light blue': 'DodgerBlue',
+    'pink': 'HotPink',
+    'violet': 'BlueViolet',
+    'green': 'SpringGreen'
 }
 
 def weighted_choice(choices):
@@ -462,27 +462,14 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 time.sleep(10)
                 send_chat(irc, f'/me FeelsDankMan 🕐 {time.strftime("%M:%I %p")}?', channel)
 
-        if command.lower() == 'coinflip':
-            random_number = random.randint(1, 100)
-            if random_number < 49:
-                send_chat(irc, f'🪙 Tails! (no)', channel)
-            if random_number == 50:
-                send_chat(irc, f"FeelsDankMan 🪙 I can't really tell...", channel)
-            if random_number > 51:
-                send_chat(irc, F'🪙 Heads! (yes)', channel)
-            if random_number == 49:
-                send_chat(irc, f"FeelsDankMan I lost the coin...", channel)
-
-        if command.lower() == 'cf':
-            random_number = random.randint(1, 100)
-            if random_number < 49:
-                send_chat(irc, f'🪙 Tails! (no)', channel)
-            if random_number == 50:
-                send_chat(irc, f"FeelsDankMan 🪙 I can't really tell...", channel)
-            if random_number > 51:
-                send_chat(irc, F'🪙 Heads! (yes)', channel)
-            if random_number == 49:
-                send_chat(irc, f"FeelsDankMan I lost the coin...", channel)
+        if command.lower() in ('coinflip', 'cf'):
+            results = {
+                "🪙 Tails! (no)": 50,
+                "🪙 Heads! (yes)": 50,
+                "FeelsDankMan 🪙 I can't really tell...": 1,
+                "FeelsDankMan I lost the coin...": 1
+            }
+            send_chat(irc, weighted_choice(results), channel)
 
         if command.lower() == 'yell':
             message_uppercase = message[5:].upper()
@@ -507,7 +494,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             random_number = random.randint(1, 20)
             if random_number < 19:
                 send_chat(irc, f'FeelsDankMan 👉 @{user}', channel)
-            if random_number == 20:
+            else:
                 send_chat(irc, f'FeelsDankMan PONG!', channel)
                 time.sleep(0.75)
                 send_chat(irc, f'FeelsDankMan uhm...', channel)
@@ -520,13 +507,12 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             send_chat(irc, F'FeelsDankMan 👉 @{user}', channel)
 
         if command.lower() == 'Ping':
-            random_number = random.randint(1, 50)
-            if random_number < 48:
-                send_chat(irc, f'PONG! FeelsDankMan WineTime', channel)
-            if random_number == 49:
-                send_chat(irc, f'PING! FeelsDankMan', channel)
-            if random_number == 50:
-                send_chat(irc, f'PING￼ THIS￼ docCBT', channel)
+            results = {
+                "PONG! FeelsDankMan WineTime": 48,
+                "PING! FeelsDankMan": 1,
+                "PING  THIS docCBT": 1
+            }
+            send_chat(irc, weighted_choice(results), channel)
 
         if command.lower() == 'kiss':
             if message == '~kiss':
@@ -583,9 +569,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                 send_chat(irc, f'/me : PepeLaugh rate mal', channel)
                 time.sleep(3)
                 send_chat(irc, f'/me : hast ne Eins MaxLOL', channel)
-            if random_number == 2:
-                send_chat(irc, f'/me : nur ne Zwei FeelsBadMan .oO( EleGiggle )', channel)
-            if random_number == 3:
+            elif random_number == 3:
                 if channel.__contains__('tomsomnium1'):
                     send_chat(irc, f'/me : ne 3 du Loser LULE', channel)
                 if channel.__contains__('davenetlive'):
@@ -594,16 +578,15 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
                     send_chat(irc, f'/me : ne 3 du Loser LULW', channel)
                 if channel.__contains__('paauulli'):
                     send_chat(irc, f'/me : ne 3 du Loser LULW', channel)
-            if random_number == 4:
-                send_chat(irc, f'/me : ne Vier sogar SeemsGood', channel)
-            if random_number == 5:
-                send_chat(irc, f'/me : ne Fünf VisLaud', channel)
-            if random_number == 6:
+            elif random_number == 6:
                 send_chat(irc, f'/me : PepeLaugh rate mal', channel)
                 time.sleep(3)
                 send_chat(irc, f'/me : hast ne Sechs PagMan ', channel)
-            if random_number == 7:
-                send_chat(irc, f'/me : eShrug wo soll ich nen Würfel her haben', channel)
+            else:
+                other = ('nur ne Zwei FeelsBadMan .oO( EleGiggle )',
+                        'ne Vier sogar SeemsGood', 'ne Fünf VisLaud',
+                        'eShrug wo soll ich nen Würfel her haben')
+                send_chat(irc, f'/me : {random.choice(other)}', channel)
 
    except Exception as Error:
        try:
