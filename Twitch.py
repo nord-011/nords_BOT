@@ -208,9 +208,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         send_chat(irc, f'/me : {user} said "{message}"', '#nords_bot')
 
     if message.lower().startswith('~massping'):
-        channel_no_hashtag1 = channel.split('#')
-        channel_no_hashtag = str(channel_no_hashtag1[1])
-        if user == f'{channel_no_hashtag}' or user in MODS:
+        if user == channel[1:] or user in MODS:
             try:
                 massping(massping_message)
             except:
@@ -331,11 +329,8 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
 
 
         if command.lower() == 'pyramid':
-            channel_no_hashtag1 = channel.split('#')
-            channel_no_hashtag = str(channel_no_hashtag1[1])
-            if user == f'{channel_no_hashtag}' or user in MODS:
-                pyramid_message1 = " ".join(message_components[2:])
-                pyramid_message = f'{pyramid_message1} '
+            if user == channel[1:] or user in MODS:
+                pyramid_message = " ".join(message_components[2:]) + " "
                 length = int(message_components[1])
                 message_lengh = pyramid_message*length
                 if len(message_lengh) > 500:
@@ -397,9 +392,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
 
 
         if command.lower() == 'spam':
-            channel_no_hashtag1 = channel.split('#')
-            channel_no_hashtag = str(channel_no_hashtag1[1])
-            if user == f'{channel_no_hashtag}' or user in MODS:
+            if user == channel[1:] or user in MODS:
                 try:
                     counter = 0
                     message = ' '.join(components[5:])
