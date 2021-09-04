@@ -168,7 +168,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         except Exception:
             pass
 
-    if message.startswith('!clear'):
+    if message.startswith('!clear') and user in MODS:
         send_chat(irc, f'◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM \
                 ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM \
                 ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM ◯⸻⸻⸻⸻⸻⸻◯ NaM \
