@@ -32,7 +32,7 @@ colors_map = {
     'green': 'SpringGreen'
 }
 
-def weighted_choice(choices):
+def weighted_choice(a):
     return random.choices(*tuple(zip(*[(k, a[k]) for k in a]))) # magic
 
 def send(irc: ssl.SSLSocket, message: str):
@@ -466,7 +466,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             results = {
                 "🪙 Tails! (no)": 50,
                 "🪙 Heads! (yes)": 50,
-                "FeelsDankMan 🪙 I can't really tell...": 1,
+                "FeelsDankMan 🪙   I can't really tell...": 1,
                 "FeelsDankMan I lost the coin...": 1
             }
             send_chat(irc, weighted_choice(results), channel)
