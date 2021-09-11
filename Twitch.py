@@ -115,7 +115,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         write.close()
 
     if 'A Raid Event at Level' in message:
-        if user == 'huwobot' or 'nord_011':
+        if user == 'huwobot' or user == 'nord_011':
             file = open('raidusers.txt')
             for users in file:
                 print(users)
