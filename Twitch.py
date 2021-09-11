@@ -114,12 +114,16 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
         send_chat(irc, f'hackerCD connected', connect_to_channel)
         write.close()
 
-    if 'A Raid Event at Level' in message and user == 'huwobot':
-        file = open('raidusers.txt')
-        for users in file:
-            print(users)
-            send_chat(irc, f'dankClappers  RAID DETECTED!!! {users}', channel)
-        file.close()
+    if 'A Raid Event at Level' in message:
+        if user == 'huwobot' or 'nord_011':
+            file = open('raidusers.txt')
+            for users in file:
+                print(users)
+                send_chat(irc, f'dankClappers  RAID DETECTED!!! {users}', channel)
+                send_chat(irc, f'dankClappers  RAID DETECTED!!! {users}', "#WDEWEISHEIM")
+            file.close()
+        else:
+            send_chat(irc, f'Clueless RAID DETECTED!!!', channel)
     if message.lower().startswith('~notifyme raid'):
         file = open('raidusers.txt', 'r')
         read = file.read()
