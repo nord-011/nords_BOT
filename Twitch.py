@@ -136,7 +136,7 @@ def handle_chat(irc: ssl.SSLSocket, raw_message: str):
             send_chat(irc, f'/me :) 👍 @{user} I will now notify you as soon as a raid appears', channel)
             file.close()
     if message.lower().startswith('~removeme raid'):
-        file = open('raidusers.txt', 'wr')
+        file = open('raidusers.txt', 'w+')
         read = file.read()
         if user in read:
             newfile = read.replace(f'@{user}, ', '')
